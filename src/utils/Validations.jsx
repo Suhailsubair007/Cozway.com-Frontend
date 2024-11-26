@@ -12,8 +12,7 @@ export const addressValidationSchema = Yup.object().shape({
     .required("Phone number is required"),
   address: Yup.string()
     .required("Address is required")
-    .trim("Address cannot include spaces")
-    .strict(true),
+    .trim("Address cannot include spaces"),
   district: Yup.string()
     .required("District is required")
     .trim("district cannot include spaces")

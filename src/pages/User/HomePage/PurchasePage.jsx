@@ -3,7 +3,7 @@ import Header from "@/ReuseComponets/User/Header";
 import Footer from "@/ReuseComponets/User/Footer";
 import RelatedProducts from "@/ReuseComponets/User/RelatedProduct";
 import ProductDetail from "@/ReuseComponets/User/Purchase";
-// import Reviews from "@/ReuseComponets/Review";
+
 const PurchasePage = () => {
   return (
     <div>
