@@ -125,7 +125,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link to="/" className="font-bold text-xl tracking-wide px-4 py-2">
               <img
-                src="https://res.cloudinary.com/dupo7yv88/image/upload/v1730692045/logo-no-background_poots9.png"
+                src="https://res.cloudinary.com/dupo7yv88/image/upload/v1732628978/logooo_vr8eur.png"
                 alt="Logo"
                 style={{ width: "100px", height: "auto" }}
               />
