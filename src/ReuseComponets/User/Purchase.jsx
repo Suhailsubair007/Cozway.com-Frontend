@@ -158,8 +158,10 @@ const ProductDetail = () => {
         toast.success("Item added to your wishlist!");
       }
     } catch (error) {
+      if (error.status == 403) {
+        toast.error(error.response.data.error);
+      }
       console.error("Error adding to wishlist:", error);
-      toast.error("Failed to add item to wishlist. Please try again.");
     }
   };
 

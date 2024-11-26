@@ -62,6 +62,9 @@ export default function Address() {
       toast.success('Address deleted sucessfully...')
     } catch (error) {
       console.error("Error deleting address:", error);
+      if (error.response) {
+        toast.error(error.response.data.message);
+      }
     } finally {
       setIsCancelDialogOpen(false);
       setAddressToDelete(null);

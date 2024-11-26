@@ -65,6 +65,9 @@ export default function ProfileUpdate() {
               }
             } catch (error) {
               toast.error("Error submitting form");
+              if (error.response) {
+                toast.error(error.response.data.message);
+              }
             } finally {
               setSubmitting(false);
             }

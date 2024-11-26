@@ -45,6 +45,9 @@ function AddAddressModal({ isOpen, onClose, onAdd }) {
       onClose();
     } catch (error) {
       console.error("Error adding address:", error);
+      if (error.response) {
+        toast.error(error.response.data.message);
+      }
     }
     setSubmitting(false);
   };

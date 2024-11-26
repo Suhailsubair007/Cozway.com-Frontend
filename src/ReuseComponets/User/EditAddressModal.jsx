@@ -4,6 +4,7 @@ import { Formik, Form, Field } from "formik";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {toast} from 'sonner';
 import axiosInstance from "@/config/axiosConfig";
 import {
   Dialog,
@@ -60,6 +61,9 @@ export default function EditAddressModal({
       onClose();
     } catch (error) {
       console.error("Error updating address:", error);
+      if (error.response) {
+        toast.error(error.response.data.message);
+      }
     } finally {
       setSubmitting(false);
     }

@@ -54,6 +54,9 @@ export default function OrderDetail() {
     } catch (error) {
       console.error("Error fetching order:", error);
       setError("Failed to fetch order details");
+      if (error.response) {
+        toast.error(error.response.data.message);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -134,8 +137,10 @@ export default function OrderDetail() {
 
       toast.success("Invoice downloaded successfully");
     } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message);
+      }
       console.error("Error downloading invoice:", error);
-      toast.error("Failed to download invoice");
     }
   };
 
