@@ -1,7 +1,20 @@
-import { useState } from "react";
-import { X } from "lucide-react";
 
-export default function WalletPopup({ isOpen, onClose, children }) {
+import { useState } from "react";
+import { X } from 'lucide-react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+
+const validationSchema = Yup.object().shape({
+  amount: Yup.number()
+    .typeError('Amount must be a number')
+    .positive('Amount must be positive')
+    .max(1000, 'Amount cannot exceed 1000')
+    .required('Amount is required')
+});
+
+export default function WalletPopup({ isOpen, onClose, onSubmit }) {
   if (!isOpen) return null;
 
   return (
@@ -14,8 +27,34 @@ export default function WalletPopup({ isOpen, onClose, children }) {
             <X className="w-5 h-5" />
           </button>
         </div>
-        {children}
+        <Formik
+          initialValues={{ amount: '' }}
+          validationSchema={validationSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            onSubmit(values.amount);
+            setSubmitting(false);
+          }}
+        >
+          {({ isSubmitting, errors, touched }) => (
+            <Form>
+              <div className="mb-4">
+                <Field
+                  as={Input}
+                  type="text"
+                  name="amount"
+                  placeholder="Enter amount"
+                  className={`w-full ${errors.amount && touched.amount ? 'border-red-500' : ''}`}
+                />
+                <ErrorMessage name="amount" component="div" className="text-red-500 text-sm mt-1" />
+              </div>
+              <Button type="submit" disabled={isSubmitting} className="w-full">
+                Add Funds
+              </Button>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );
 }
+
