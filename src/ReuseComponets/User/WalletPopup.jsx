@@ -1,20 +1,19 @@
-
 import { useState } from "react";
 import { X } from 'lucide-react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const validationSchema = Yup.object().shape({
   amount: Yup.number()
-    .typeError('Amount must be a number')
-    .positive('Amount must be positive')
-    .max(1000, 'Amount cannot exceed 1000')
-    .required('Amount is required')
+    .typeError("Amount must be a number")
+    .min(1, "Amount must be at least 1")
+    .max(1000, "Amount cannot exceed 1000")
+    .required("Amount is required"),
 });
 
-export default function WalletPopup({ isOpen, onClose, onSubmit }) {
+export default function WalletPopup({ isOpen, onClose, onAddFunds }) {
   if (!isOpen) return null;
 
   return (
@@ -28,22 +27,25 @@ export default function WalletPopup({ isOpen, onClose, onSubmit }) {
           </button>
         </div>
         <Formik
-          initialValues={{ amount: '' }}
+          initialValues={{ amount: "" }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting }) => {
-            onSubmit(values.amount);
+            onAddFunds(Number(values.amount));
             setSubmitting(false);
+            onClose();
           }}
         >
           {({ isSubmitting, errors, touched }) => (
-            <Form>
-              <div className="mb-4">
+            <Form className="space-y-4">
+              <div>
                 <Field
                   as={Input}
                   type="text"
                   name="amount"
                   placeholder="Enter amount"
-                  className={`w-full ${errors.amount && touched.amount ? 'border-red-500' : ''}`}
+                  className={`w-full ${
+                    errors.amount && touched.amount ? "border-red-500" : ""
+                  }`}
                 />
                 <ErrorMessage name="amount" component="div" className="text-red-500 text-sm mt-1" />
               </div>
