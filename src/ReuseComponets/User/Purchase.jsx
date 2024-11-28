@@ -5,14 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import axiosInstance from "@/config/axiosConfig";
 import RelatedProducts from "./RelatedProduct";
-import {
-  Star,
-  MessageSquare,
-  Heart,
-  X,
-  ChevronRight,
-  Home,
-} from "lucide-react";
+import { Star, MessageSquare, Heart, X, ChevronRight, Home } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -284,24 +277,24 @@ const ProductDetail = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-1/2">
-            <div className="relative overflow-hidden rounded-lg">
+            <div className="relative overflow-hidden rounded-lg aspect-[3/4]">
               <img
                 src={images[selectedImage]}
                 alt="Main product view"
-                className="w-auto h-auto object-cover cursor-zoom-in"
+                className="w-full h-full object-cover cursor-zoom-in"
                 onClick={openZoomModal}
               />
             </div>
-            <div className="flex gap-2 mt-4 overflow-x-auto">
+            <div className="flex gap-4 mt-6 overflow-x-auto pb-2">
               {images.map((img, index) => (
                 <img
                   key={index}
                   src={img}
                   alt={`Product view ${index + 1}`}
-                  className={`w-20 h-24 object-cover cursor-pointer border-2 rounded ${
+                  className={`w-24 h-32 object-cover cursor-pointer border-2 rounded-lg flex-shrink-0 transition-all ${
                     selectedImage === index
-                      ? "border-primary"
-                      : "border-transparent"
+                      ? "border-primary ring-2 ring-primary ring-offset-2"
+                      : "border-transparent hover:border-gray-200"
                   }`}
                   onClick={() => setSelectedImage(index)}
                 />
