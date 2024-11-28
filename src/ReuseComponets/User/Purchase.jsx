@@ -288,7 +288,7 @@ const ProductDetail = () => {
               <img
                 src={images[selectedImage]}
                 alt="Main product view"
-                className="w-[300px] h-[550px] object-cover cursor-zoom-in"
+                className="w-auto h-auto object-cover cursor-zoom-in"
                 onClick={openZoomModal}
               />
             </div>
