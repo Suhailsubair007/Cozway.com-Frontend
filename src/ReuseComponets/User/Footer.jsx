@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="flex items-center mb-6">
               <img
                 className="h-6 w-auto"
-                src="https://res.cloudinary.com/dupo7yv88/image/upload/v1730692045/logo-no-background_poots9.png"
+                src="https://res.cloudinary.com/dupo7yv88/image/upload/v1732628978/logooo_vr8eur.png"
                 alt="Company logo"
               />
             </div>
