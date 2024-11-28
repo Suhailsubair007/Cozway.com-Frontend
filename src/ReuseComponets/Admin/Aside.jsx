@@ -30,7 +30,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-// Assuming you have a logoutAdmin action in your AdminSlice
+
 import { logoutAdmin } from '@/redux/AdminSlice'
 
 export default function Component() {
@@ -75,7 +75,7 @@ export default function Component() {
     <>
       <div className="pl-10 p-4 border-b">
         <img
-          src="https://res.cloudinary.com/dupo7yv88/image/upload/v1730692045/logo-no-background_poots9.png"
+          src="https://res.cloudinary.com/dupo7yv88/image/upload/v1732628978/logooo_vr8eur.png"
           alt="Logo"
           className="w-32 h-auto"
         />
