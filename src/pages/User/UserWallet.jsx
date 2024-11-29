@@ -97,7 +97,7 @@ export default function UserWallet() {
             </h3>
             <div className="overflow-x-auto">
               <div
-                className="max-h-[500px] overflow-y-scroll scrollbar-hidden"
+                className="max-h-[400px] overflow-y-scroll scrollbar-hidden"
                 style={{ scrollbarWidth: "none" }}
               >
                 <table className="min-w-full border-collapse">
