@@ -55,7 +55,9 @@ export const CouponDisplayAtCheckout = () => {
                         </div>
                         <div className="flex items-center gap-3 w-full sm:w-auto">
                             <span className="text-sm text-muted-foreground whitespace-nowrap">
-                                Save ₹{coupon?.max_discount_amount} %
+                                Save {coupon.discount_type === 'percentage' 
+                                    ? `${coupon.discount_value}%` 
+                                    : `₹${coupon.discount_value}`}
                             </span>
                             <Button
                                 variant="outline"
