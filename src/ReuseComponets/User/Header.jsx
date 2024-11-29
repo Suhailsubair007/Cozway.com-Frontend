@@ -113,21 +113,18 @@ export default function Header() {
   const handleWishlistClick = () => {
     navigate("/wishlist");
   };
-  const handleStoryClick = () => {
-    navigate("/wishlist");
-  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 shadow-md">
       <div className="container mx-auto px-4">
-        <div className="px-6 flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="font-bold text-xl tracking-wide px-4 py-2">
+            <Link to="/" className="font-bold text-xl tracking-wide">
               <img
                 src="https://res.cloudinary.com/dupo7yv88/image/upload/v1732628978/logooo_vr8eur.png"
                 alt="Logo"
-                style={{ width: "100px", height: "auto" }}
+                className="w-20 h-auto"
               />
             </Link>
           </div>
@@ -160,7 +157,7 @@ export default function Header() {
             </Link>
           </nav>
 
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <div className="relative">
               <Button
                 onClick={handleCartClick}
@@ -243,8 +240,8 @@ export default function Header() {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Link to="/login">
-                <Button className="hidden md:inline-flex">Login</Button>
+              <Link to="/login" className="block">
+                <Button className="hidden sm:inline-flex">Login</Button>
               </Link>
             )}
 
@@ -282,6 +279,14 @@ export default function Header() {
                   >
                     Contact Us
                   </Link>
+                  {!userId && (
+                    <Link
+                      to="/login"
+                      className="text-sm font-medium hover:text-primary"
+                    >
+                      Login
+                    </Link>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>
