@@ -16,7 +16,6 @@ import WalletPopup from "@/ReuseComponets/User/WalletPopup";
 export default function UserWallet() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [balance, SetBalance] = useState(null);
-  const [amount, setAmount] = useState(0);
   const user = useSelector((state) => state.user.userInfo);
   const userId = user.id;
 
@@ -41,7 +40,7 @@ export default function UserWallet() {
     try {
       const response = await axiosInstance.post("/users/wallet", {
         userId,
-        amount: amount,
+        amount: Number(amount),
       });
       toast.success(response.data.message);
       setTransactions(response.data.wallet.transactions);
@@ -52,6 +51,7 @@ export default function UserWallet() {
       toast.error("Failed to add funds.");
     }
   };
+
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-6">
