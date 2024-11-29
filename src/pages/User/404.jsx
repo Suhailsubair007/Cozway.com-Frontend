@@ -61,7 +61,7 @@ export default function NotFound() {
             Back to Home
           </button>
           <button
-            onClick={() => navigate('/products')}
+            onClick={() => navigate('/shop')}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
           >
             <ShoppingBag className="mr-2 h-4 w-4" />
