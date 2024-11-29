@@ -41,8 +41,7 @@ export const SignupValidation = Yup.object({
   name: Yup.string()
     .required("Full name is required")
     .matches(/^[A-Za-z]+$/, "Name can only contain letters (no spaces or special characters)")
-    .min(2, "Full name must be at least 2 characters")
-    .strict(true),
+    .min(2, "Full name must be at least 2 characters"),
 
   email: Yup.string()
     .email("Invalid email address")
