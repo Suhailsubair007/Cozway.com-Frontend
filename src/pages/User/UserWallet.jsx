@@ -37,11 +37,11 @@ export default function UserWallet() {
     }
   };
 
-  const handleAddFunds = async () => {
+  const handleAddFunds = async (amount) => {
     try {
       const response = await axiosInstance.post("/users/wallet", {
         userId,
-        amount: Number(amount),
+        amount: amount,
       });
       toast.success(response.data.message);
       setTransactions(response.data.wallet.transactions);
@@ -186,24 +186,11 @@ export default function UserWallet() {
           </div>
         </div>
 
-        <WalletPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-          <p className="text-gray-700">
-            Enter the amount to add to your wallet.
-          </p>
-          <input
-            type="number"
-            placeholder="Amount"
-            className="mt-4 w-full p-2 border rounded-lg"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)} // Set the amount
-          />
-          <Button
-            className="mt-4 w-full bg-primary hover:bg-primary/90"
-            onClick={handleAddFunds}
-          >
-            Add Funds
-          </Button>
-        </WalletPopup>
+        <WalletPopup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsPopupOpen(false)}
+        onAddFunds={handleAddFunds}
+      />
       </div>
     </div>
   );
