@@ -40,26 +40,32 @@ export const addressValidationSchema = Yup.object().shape({
 export const SignupValidation = Yup.object({
   name: Yup.string()
     .required("Full name is required")
+    .matches(/^[A-Za-z]+$/, "Name can only contain letters (no spaces or special characters)")
     .min(2, "Full name must be at least 2 characters")
-    .trim("Name cannot include spaces")
     .strict(true),
+
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
+
   phone: Yup.string()
     .matches(/^\d{10}$/, "Phone number must be 10 digits")
     .required("Mobile Number is required"),
+
   password: Yup.string()
     .required("Password is required")
-    .min(6, "Password must be at least 6 characters")
-    .trim("password cannot include spaces")
-    .strict(true),
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      "Password must be at least 8 characters, include one uppercase letter, one lowercase letter, one number, and one special character"
+    )
+    .test("no-spaces", "Password cannot include spaces", (value) => !/\s/.test(value)),
+
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirm password is required")
-    .trim("password cannot include spaces")
-    .strict(true),
+    .test("no-spaces", "Password cannot include spaces", (value) => !/\s/.test(value)),
 });
+
 
 export const addOfferValidationSchema = Yup.object({
   name: Yup.string()
